@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Pdf from "../editable-stuff/resume.pdf";
 import { showBlog, FirstName } from "../editable-stuff/configurations.json";
 
 const Navbar = (props) => {
@@ -24,7 +23,7 @@ const Navbar = (props) => {
         {`<${FirstName} />`}
       </a>
       <button
-        className="navbar-toggler"
+        className="d-none navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarTogglerDemo02"
@@ -37,34 +36,6 @@ const Navbar = (props) => {
 
       <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-          {showBlog && (
-            <li className="nav-item">
-              <Link
-                className="nav-link lead"
-                to={process.env.PUBLIC_URL + "/blog"}
-              >
-                Blog
-              </Link>
-            </li>
-          )}
-          <li className="nav-item">
-            <a
-              className="nav-link lead"
-              href={process.env.PUBLIC_URL + "/#projects"}
-            >
-              Projects
-            </a>
-          </li>
-          <li className="nav-item">
-            <a
-              className="nav-link lead"
-              href={Pdf}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              <b>Resume</b>
-            </a>
-          </li>
           <li className="nav-item">
             <a
               className="nav-link lead"
@@ -73,10 +44,79 @@ const Navbar = (props) => {
               <b>About</b>
             </a>
           </li>
+          {/* <li className="nav-item">
+            <a
+              className="nav-link lead"
+              href={Pdf}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <b>Resume</b>
+            </a>
+          </li> */}
+          <li className="nav-item">
+            <a
+              className="nav-link lead"
+              href={process.env.PUBLIC_URL + "/#experience"}
+            >
+              <b>Experience</b>
+            </a>
+          </li>
+          <li className="nav-item">
+            <a
+              className="nav-link lead"
+              href={process.env.PUBLIC_URL + "/#projects"}
+            >
+              <b>Projects</b>
+            </a>
+          </li>
+          <li className="nav-item">
+            <a
+              className="nav-link lead"
+              href={process.env.PUBLIC_URL + "/#leadership"}
+            >
+              <b>Leadership</b>
+            </a>
+          </li>
+          <li className="nav-item">
+            <a
+              className="nav-link lead"
+              href={process.env.PUBLIC_URL + "/#skills"}
+            >
+              <b>Skills</b>
+            </a>
+          </li>
+          <li className="nav-item">
+            <a
+              className="nav-link lead"
+              href={process.env.PUBLIC_URL + "/#interests"}
+            >
+              <b>Interests</b>
+            </a>
+          </li>
+          {/* <li className="nav-item">
+            <a
+              className="nav-link lead"
+              href={process.env.PUBLIC_URL + "/#skills"}
+            >
+              <b>Contact</b>
+            </a>
+          </li> */}
+          {/* {showBlog && (
+            <li className="nav-item">
+              <Link
+                className="nav-link lead"
+                to={process.env.PUBLIC_URL + "/blog"}
+              >
+                <b>Blog</b>
+              </Link>
+            </li>
+          )} */}
         </ul>
       </div>
     </nav>
   );
 };
+
 
 export default Navbar;

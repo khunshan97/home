@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Profiler } from "react";
 import axios from "axios";
 import Pdf from "../../editable-stuff/resume.pdf";
+import Profile from "../../editable-stuff/Profile.jpg";
+import { Helmet } from "react-helmet";
+
 import {
   aboutHeading,
   aboutDescription,
@@ -9,7 +12,11 @@ import {
   instaUsername,
   instaQuerry,
 } from "../../editable-stuff/configurations.json";
-
+const divStyle = {
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+};
 const AboutMe = () => {
   const [instaProfilePic, setInstaProfilePic] = useState("");
   const [showInsta, setShowInsta] = useState(showInstaProfilePic);
@@ -42,21 +49,26 @@ const AboutMe = () => {
   };
 
   return (
-    <div id="aboutme" className="jumbotron jumbotron-fluid m-0">
-      <div className="container container-fluid p-5">
-        <div className="row">
-          {showInsta && (
-            <div className="col-5 d-none d-lg-block align-self-center">
-              <img
-                className="border border-secondary rounded-circle"
-                src={instaProfilePic}
-                alt="profilepicture"
-              />
-            </div>
-          )}
-          <div className={`col-lg-${showInsta ? "7" : "12"}`}>
+    <div
+      id="aboutme"
+      className="jumbotron jumbotron-fluid m-0"
+      style={{ backgroundColor: "#f7f7f7" }}
+    >
+      <div className="container container-fluid">
+        <div className="row" style={divStyle}>
+          <div className="col-5 d-none d-lg-inline align-self-center">
+            <img
+              className="border border-secondary rounded-circle"
+              src={Profile}
+              alt="profilepicture"
+              width="375"
+              height="375"
+            />
+          </div>
+          <div className="col d-lg-inline align-self-center">
             <h1 className="display-4 mb-5 text-center">{aboutHeading}</h1>
             <p className="lead text-center">{aboutDescription}</p>
+            <br />
             {resumeURL && (
               <p className="lead text-center">
                 <a
@@ -65,7 +77,6 @@ const AboutMe = () => {
                   target="_blank"
                   rel="noreferrer noopener"
                   role="button"
-                  aria-label="Resume/CV"
                 >
                   Resume
                 </a>
